@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | MHG Market</title>
     <script>
-        if (!sessionStorage.getItem('adminActive')) { window.location.replace("login.html"); }
+        if (!sessionStorage.getItem('adminActive')) { window.location.replace("./login.html"); }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -227,11 +227,11 @@
                 tDisplay.innerText = enToBn(Math.ceil((logoutTime - now)/1000));
             }
         }, 1000);
-        async function forceLogout() { sessionStorage.removeItem('adminActive'); await signOut(auth); window.location.replace("login.html"); }
+        async function forceLogout() { sessionStorage.removeItem('adminActive'); await signOut(auth); window.location.replace("./login.html"); }
         window.resetIdleTimer = resetIdleTimer; window.forceLogout = forceLogout;
         window.onmousemove = resetIdleTimer; window.onkeydown = resetIdleTimer;
 
-        onAuthStateChanged(auth, u => { if (!u) window.location.replace("login.html"); else { document.body.style.display = "flex"; resetIdleTimer(); } });
+        onAuthStateChanged(auth, u => { if (!u) window.location.replace("./login.html"); else { document.body.style.display = "flex"; resetIdleTimer(); } });
 
         // Sidebar Directory List
         onSnapshot(collection(db, "clients"), snap => {
